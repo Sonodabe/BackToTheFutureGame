@@ -38,6 +38,8 @@ public class GameManager : MonoBehaviour {
 	void Start () {
 		// Set the default game state
 		state = GameState.GameSetup;
+		//Screen.showCursor = false;
+		Screen.lockCursor = true;
 	}
 
 	void FixedUpdate () {
@@ -82,6 +84,10 @@ public class GameManager : MonoBehaviour {
 			boardCont.transform.position = spawnLoc.position;
 			boardCont.transform.rotation = spawnLoc.rotation;
 			boardCont.rigidbody.velocity = Vector3.zero;
+		}
+
+		if (Input.GetAxisRaw("BoardTurn") != 0) {
+			Screen.lockCursor = true;
 		}
 	}
 
