@@ -16,7 +16,7 @@ public class AutoCam : PivotBasedCameraRig
     [SerializeField] private float smoothTurnTime = 0.2f;           // the smoothing for the camera's rotation
 
 	private float lastFlatAngle;                            // The relative angle of the target and the rig from the previous frame.
-	private float currentTurnAmount;                        // How much to turn the camera
+	private float currentTurnAmount = 1.0f;                        // How much to turn the camera
 	private float turnSpeedVelocityChange;                  // The change in the turn speed velocity
 	private Vector3 rollUp = Vector3.up;                    // The roll of the camera around the z axis ( generally this will always just be up )
 

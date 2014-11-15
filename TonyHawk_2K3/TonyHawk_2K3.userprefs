@@ -1,8 +1,10 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/GameManager.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/BoardCamera.cs">
     <Files>
-      <File FileName="Assets/Scripts/GameManager.cs" Line="62" Column="10" />
+      <File FileName="Assets/Scripts/AbstractTargetFollower.cs" Line="17" Column="34" />
+      <File FileName="Assets/Scripts/BoardCamera.cs" Line="11" Column="51" />
+      <File FileName="Assets/Scripts/PivotBasedCameraRig.cs" Line="11" Column="2" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
