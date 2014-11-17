@@ -65,6 +65,6 @@ public class BoardCamera : PivotBasedCameraRig {
 		
 		// Update the camera rotation and position
 		transform.position = Vector3.Lerp(transform.position, target.position, deltaTime * moveSpeed);
-		transform.rotation = Quaternion.Lerp(transform.rotation, lookRotation, turnSpeed * currentTurnAmount * deltaTime);
+		pivot.rotation = Quaternion.Lerp(pivot.rotation, lookRotation, turnSpeed * currentTurnAmount * deltaTime);
 	}
 }

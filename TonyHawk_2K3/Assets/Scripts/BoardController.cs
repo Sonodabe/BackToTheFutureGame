@@ -41,8 +41,8 @@ public class BoardController : MonoBehaviour {
 		float wheelInput = Input.GetAxis("Mouse ScrollWheel");
 
 		// Update the velocity of the hoverboard
-		if (isGrounded && wheelInput > 0 && (speed + wheelInput * accelMod) < maxSpeed) {
-			rigidbody.velocity += transform.forward * wheelInput * accelMod;
+		if (isGrounded && wheelInput < 0 && (speed + wheelInput * accelMod) < maxSpeed) {
+			rigidbody.velocity += transform.forward * -wheelInput * accelMod;
 		}
 
 		// Get the mouse delta input
