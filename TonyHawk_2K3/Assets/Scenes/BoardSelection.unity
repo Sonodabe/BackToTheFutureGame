@@ -106,43 +106,43 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rotationSpeed: 1
   prefabs:
-  - {fileID: 100006, guid: 3c9e05fb4b84e4b5db703b0b48c9c783, type: 2}
-  - {fileID: 100006, guid: 3c9e05fb4b84e4b5db703b0b48c9c783, type: 2}
-  - {fileID: 100006, guid: 3c9e05fb4b84e4b5db703b0b48c9c783, type: 2}
-  - {fileID: 100006, guid: 3c9e05fb4b84e4b5db703b0b48c9c783, type: 2}
-  - {fileID: 100006, guid: 3c9e05fb4b84e4b5db703b0b48c9c783, type: 2}
-  - {fileID: 100006, guid: 3c9e05fb4b84e4b5db703b0b48c9c783, type: 2}
-  - {fileID: 100006, guid: 3c9e05fb4b84e4b5db703b0b48c9c783, type: 2}
-  - {fileID: 100006, guid: 3c9e05fb4b84e4b5db703b0b48c9c783, type: 2}
-  - {fileID: 100006, guid: 3c9e05fb4b84e4b5db703b0b48c9c783, type: 2}
-  - {fileID: 100006, guid: 3c9e05fb4b84e4b5db703b0b48c9c783, type: 2}
-  - {fileID: 100006, guid: 3c9e05fb4b84e4b5db703b0b48c9c783, type: 2}
-  - {fileID: 100006, guid: 3c9e05fb4b84e4b5db703b0b48c9c783, type: 2}
-  - {fileID: 100006, guid: 3c9e05fb4b84e4b5db703b0b48c9c783, type: 2}
-  - {fileID: 100006, guid: 3c9e05fb4b84e4b5db703b0b48c9c783, type: 2}
-  - {fileID: 100006, guid: 3c9e05fb4b84e4b5db703b0b48c9c783, type: 2}
-  - {fileID: 100006, guid: 3c9e05fb4b84e4b5db703b0b48c9c783, type: 2}
-  - {fileID: 100006, guid: 3c9e05fb4b84e4b5db703b0b48c9c783, type: 2}
-  - {fileID: 100006, guid: 3c9e05fb4b84e4b5db703b0b48c9c783, type: 2}
-  - {fileID: 100006, guid: 3c9e05fb4b84e4b5db703b0b48c9c783, type: 2}
-  - {fileID: 100006, guid: 3c9e05fb4b84e4b5db703b0b48c9c783, type: 2}
-  - {fileID: 100006, guid: 3c9e05fb4b84e4b5db703b0b48c9c783, type: 2}
-  - {fileID: 100006, guid: 3c9e05fb4b84e4b5db703b0b48c9c783, type: 2}
-  - {fileID: 100006, guid: 3c9e05fb4b84e4b5db703b0b48c9c783, type: 2}
-  - {fileID: 100006, guid: 3c9e05fb4b84e4b5db703b0b48c9c783, type: 2}
-  - {fileID: 100006, guid: 3c9e05fb4b84e4b5db703b0b48c9c783, type: 2}
-  - {fileID: 100006, guid: 3c9e05fb4b84e4b5db703b0b48c9c783, type: 2}
-  - {fileID: 100006, guid: 3c9e05fb4b84e4b5db703b0b48c9c783, type: 2}
-  - {fileID: 100006, guid: 3c9e05fb4b84e4b5db703b0b48c9c783, type: 2}
-  - {fileID: 100006, guid: 3c9e05fb4b84e4b5db703b0b48c9c783, type: 2}
-  - {fileID: 100006, guid: 3c9e05fb4b84e4b5db703b0b48c9c783, type: 2}
-  - {fileID: 100006, guid: 3c9e05fb4b84e4b5db703b0b48c9c783, type: 2}
-  - {fileID: 100006, guid: 3c9e05fb4b84e4b5db703b0b48c9c783, type: 2}
-  - {fileID: 100006, guid: 3c9e05fb4b84e4b5db703b0b48c9c783, type: 2}
-  - {fileID: 100006, guid: 3c9e05fb4b84e4b5db703b0b48c9c783, type: 2}
-  - {fileID: 100006, guid: 3c9e05fb4b84e4b5db703b0b48c9c783, type: 2}
-  - {fileID: 100006, guid: 3c9e05fb4b84e4b5db703b0b48c9c783, type: 2}
-  - {fileID: 100006, guid: 3c9e05fb4b84e4b5db703b0b48c9c783, type: 2}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!23 &163910259
 Renderer:
   m_ObjectHideFlags: 0
@@ -161,9 +161,8 @@ Renderer:
   m_UseLightProbes: 0
   m_LightProbeAnchor: {fileID: 0}
   m_ScaleInLightmap: 1
-  m_SortingLayer: 0
-  m_SortingOrder: 0
   m_SortingLayerID: 0
+  m_SortingOrder: 0
 --- !u!136 &163910260
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -195,6 +194,7 @@ Transform:
   m_LocalScale: {x: 350, y: .600000024, z: 350}
   m_Children: []
   m_Father: {fileID: 0}
+  m_RootOrder: 1
 --- !u!1 &1409217784
 GameObject:
   m_ObjectHideFlags: 0
@@ -233,7 +233,7 @@ Light:
     m_Softness: 4
     m_SoftnessFade: 1
   m_Cookie: {fileID: 0}
-  m_DrawHalo: 1
+  m_DrawHalo: 0
   m_ActuallyLightmapped: 0
   m_Flare: {fileID: 0}
   m_RenderMode: 0
@@ -257,6 +257,7 @@ Transform:
   m_LocalScale: {x: 14, y: 14, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
+  m_RootOrder: 2
 --- !u!1 &1656548238
 GameObject:
   m_ObjectHideFlags: 0
@@ -324,8 +325,11 @@ Camera:
     m_Bits: 4294967295
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
+  m_TargetDisplay: 0
   m_HDR: 0
   m_OcclusionCulling: 1
+  m_StereoConvergence: 10
+  m_StereoSeparation: .0219999999
 --- !u!4 &1656548243
 Transform:
   m_ObjectHideFlags: 0
@@ -337,3 +341,4 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
+  m_RootOrder: 0
