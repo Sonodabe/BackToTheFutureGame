@@ -3,7 +3,7 @@ using System.Collections;
 
 public class SelectionBoardController : MonoBehaviour {
     public float oscillationSpeed = 0.1f;  // The speed at which the board moves up and down
-    public float amplitude = 3.0f; // The maximum distance the board moves up and down
+    public float amplitude = 0.3f; // The maximum distance the board moves up and down
     public float rotationSpeed = 0.8f;
 
     private float theta;

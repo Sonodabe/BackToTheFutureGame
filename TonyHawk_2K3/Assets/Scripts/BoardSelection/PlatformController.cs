@@ -11,17 +11,14 @@ public class PlatformController : MonoBehaviour {
         boardControllers = new SelectionBoardController[prefabs.Length];
         for (int i = 0; i < prefabs.Length; i++) {
             float angle = 6.28f * i / prefabs.Length;
-            Vector3 position = new Vector3 (0.4f * Mathf.Sin (angle), 65, 0.4f * Mathf.Cos (angle));
+            Vector3 position = new Vector3 (0.4f * Mathf.Sin (angle), 9, 0.4f * Mathf.Cos (angle));
             Quaternion rotation = Quaternion.AngleAxis (Mathf.Rad2Deg * angle, Vector3.up);
 
             GameObject board = Instantiate (prefabs [i], Vector3.zero, rotation) as GameObject;
 
             board.transform.parent = transform;
             board.transform.localPosition = position;
-
-            // Create separate prefab of this size
-            board.transform.localScale = new Vector3 (2.14f, 1250f, 0.5f);
-
+           
             SelectionBoardController boardController = board.AddComponent<SelectionBoardController> ();
             boardControllers [i] = boardController;
         }
