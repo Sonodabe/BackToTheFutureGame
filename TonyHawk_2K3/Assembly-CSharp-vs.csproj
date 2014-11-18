@@ -46,18 +46,20 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\Scripts\AbstractTargetFollower.cs" />
-     <Compile Include="Assets\Scripts\AutoCam.cs" />
-     <Compile Include="Assets\Scripts\BoardCamera.cs" />
-     <Compile Include="Assets\Scripts\BoardController.cs" />
-     <Compile Include="Assets\Scripts\BoardTrick.cs" />
-     <Compile Include="Assets\Scripts\Charge.cs" />
-     <Compile Include="Assets\Scripts\GUIAspectRatioScale.cs" />
-     <Compile Include="Assets\Scripts\GameManager.cs" />
-     <Compile Include="Assets\Scripts\PivotBasedCameraRig.cs" />
-     <Compile Include="Assets\Scripts\ProtectCameraFromWallClip.cs" />
-     <Compile Include="Assets\Scripts\SoundUtils.cs" />
-     <Compile Include="Assets\Scripts\TextAnimator.cs" />
+     <Compile Include="Assets\Scripts\BoardSelection\PlatformController.cs" />
+     <Compile Include="Assets\Scripts\BoardSelection\SelectionBoardController.cs" />
+     <Compile Include="Assets\Scripts\Camera\AbstractTargetFollower.cs" />
+     <Compile Include="Assets\Scripts\Camera\AutoCam.cs" />
+     <Compile Include="Assets\Scripts\Camera\BoardCamera.cs" />
+     <Compile Include="Assets\Scripts\Camera\PivotBasedCameraRig.cs" />
+     <Compile Include="Assets\Scripts\Camera\ProtectCameraFromWallClip.cs" />
+     <Compile Include="Assets\Scripts\Game\BoardController.cs" />
+     <Compile Include="Assets\Scripts\Game\BoardTrick.cs" />
+     <Compile Include="Assets\Scripts\Game\Charge.cs" />
+     <Compile Include="Assets\Scripts\Game\GameManager.cs" />
+     <Compile Include="Assets\Scripts\Game\TextAnimator.cs" />
+     <Compile Include="Assets\Scripts\Utility\GUIAspectRatioScale.cs" />
+     <Compile Include="Assets\Scripts\Utility\SoundUtils.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
