@@ -14,6 +14,8 @@ public class BoardController : MonoBehaviour {
 	public float groundDist;	// Distance to determine whether grounded
 	private bool isGrounded;	// Whether the board is grounded
 
+	public float crouchForce;	// The amount of force applied to the board for crouching
+
 	// Reference to the trick controller
 	private BoardTrick boardTrick;
 	private Charge[] charges;
@@ -57,6 +59,10 @@ public class BoardController : MonoBehaviour {
 
 		// Apply turning torque to the hoverboard
 		rigidbody.AddRelativeTorque(0.0f, turnForce * turnInput, 0.0f);
+
+		foreach (Charge charge in charges) {
+			charge.ChangeDelta(Input.GetAxisRaw ("Jump") != 0 && isGrounded);
+		}
 	}
 
 	public void UpdateChargeEnabled(bool isEnabled) {
