@@ -285,8 +285,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxDistance: 0
   minDistance: 0
-  maxCharge: 3
+  defaultCharge: 3
   minCharge: 1.5
+  jumpCharge: 5.5
   decayRate: .100000001
 --- !u!1 &71256439
 GameObject:
@@ -376,8 +377,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxDistance: 0
   minDistance: 0
-  maxCharge: 3
+  defaultCharge: 3
   minCharge: 1.5
+  jumpCharge: 5.5
   decayRate: .100000001
 --- !u!1 &102779706
 GameObject:
@@ -476,8 +478,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxDistance: 0
   minDistance: 0
-  maxCharge: 3
+  defaultCharge: 3
   minCharge: 1.5
+  jumpCharge: 5.5
   decayRate: .100000001
 --- !u!1 &135809096
 GameObject:
@@ -566,8 +569,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxDistance: 0
   minDistance: 0
-  maxCharge: 3
+  defaultCharge: 3
   minCharge: 1.5
+  jumpCharge: 5.5
   decayRate: .100000001
 --- !u!1 &217396865
 GameObject:
@@ -852,8 +856,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxDistance: 0
   minDistance: 0
-  maxCharge: 3
+  defaultCharge: 3
   minCharge: 1.5
+  jumpCharge: 5.5
   decayRate: .100000001
 --- !u!1 &719177209
 GameObject:
@@ -930,8 +935,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxDistance: 0
   minDistance: 0
-  maxCharge: 3
+  defaultCharge: 3
   minCharge: 1.5
+  jumpCharge: 5.5
   decayRate: .100000001
 --- !u!64 &719177214
 MeshCollider:
@@ -1034,8 +1040,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxDistance: 0
   minDistance: 0
-  maxCharge: 3
+  defaultCharge: 3
   minCharge: 1.5
+  jumpCharge: 5.5
   decayRate: .100000001
 --- !u!1 &852778781
 GameObject:
@@ -1189,8 +1196,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxDistance: 0
   minDistance: 0
-  maxCharge: 3
+  defaultCharge: 3
   minCharge: 1.5
+  jumpCharge: 5.5
   decayRate: .100000001
 --- !u!1 &953262926
 GameObject:
@@ -2603,8 +2611,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxDistance: 0
   minDistance: 0
-  maxCharge: 3
+  defaultCharge: 3
   minCharge: 1.5
+  jumpCharge: 5.5
   decayRate: .100000001
 --- !u!1 &1176889982
 GameObject:
@@ -2751,8 +2760,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxDistance: 0
   minDistance: 0
-  maxCharge: 3
+  defaultCharge: 3
   minCharge: 1.5
+  jumpCharge: 5.5
   decayRate: .100000001
 --- !u!1 &1209451932
 GameObject:
@@ -2841,8 +2851,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxDistance: 0
   minDistance: 0
-  maxCharge: 3
+  defaultCharge: 3
   minCharge: 1.5
+  jumpCharge: 5.5
   decayRate: .100000001
 --- !u!1 &1220578334
 GameObject:
@@ -2855,7 +2866,7 @@ GameObject:
   m_Layer: 0
   m_Name: Pivot
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: -1500306622, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -3023,8 +3034,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxDistance: 0
   minDistance: 0
-  maxCharge: 3
+  defaultCharge: 3
   minCharge: 1.5
+  jumpCharge: 5.5
   decayRate: .100000001
 --- !u!1 &1337830999
 GameObject:
@@ -3311,7 +3323,7 @@ GameObject:
   m_Layer: 0
   m_Name: Board Camera
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: -215833656, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -3481,8 +3493,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxDistance: 3
   minDistance: .150000006
-  maxCharge: 3
+  defaultCharge: 3
   minCharge: .200000003
+  jumpCharge: 5.5
   decayRate: .100000001
 --- !u!1 &1835220413
 GameObject:
@@ -3525,8 +3538,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxDistance: 3
   minDistance: .150000006
-  maxCharge: 3
+  defaultCharge: 3
   minCharge: .200000003
+  jumpCharge: 5.5
   decayRate: .100000001
 --- !u!1 &1881475699
 GameObject:
@@ -3662,8 +3676,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxDistance: 0
   minDistance: 0
-  maxCharge: 3
+  defaultCharge: 3
   minCharge: 1.5
+  jumpCharge: 5.5
   decayRate: .100000001
 --- !u!1 &1983223571
 GameObject:
@@ -4870,8 +4885,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxDistance: 0
   minDistance: 0
-  maxCharge: 3
+  defaultCharge: 3
   minCharge: 1.5
+  jumpCharge: 5.5
   decayRate: .100000001
 --- !u!1001 &2110213778
 Prefab:
