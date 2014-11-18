@@ -8,13 +8,11 @@ public class SelectionBoardController : MonoBehaviour {
 
     private float theta;
     private float lastY;
-    private bool active;
 
     // Use this for initialization
     void Start () {
         theta = 0;
         lastY = 0;
-        active = false;
     }
 
     public void Activate () {
@@ -25,5 +23,9 @@ public class SelectionBoardController : MonoBehaviour {
         transform.Translate (deltaY * transform.up);
         
         lastY = newY;
+
+        float rotationX = -Input.GetAxis ("Mouse X");
+        float rotationY = 0*Input.GetAxis ("Mouse Y");
+        transform.Rotate (new Vector3(rotationY, rotationX, 0));
     }
 }

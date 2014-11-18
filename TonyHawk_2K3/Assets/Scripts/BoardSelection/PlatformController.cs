@@ -20,7 +20,7 @@ public class PlatformController : MonoBehaviour {
             board.transform.localPosition = position;
 
             // Create separate prefab of this size
-            board.transform.localScale = new Vector3 (2.14f, 1250f, 0.02f);
+            board.transform.localScale = new Vector3 (2.14f, 1250f, 0.5f);
 
             SelectionBoardController boardController = board.AddComponent<SelectionBoardController> ();
             boardControllers [i] = boardController;
