@@ -3,6 +3,8 @@ using System.Collections;
 
 public class SelectionController : MonoBehaviour {
 
+	private GameManager gameManager;
+
 	public GameObject[] boardPrefabs;
 	private SelectionBoardController[] boards;
 
@@ -14,10 +16,14 @@ public class SelectionController : MonoBehaviour {
 	private float arcDist;
 
 	public float turnSpeed;
+	public AudioClip turnSound;
 	public float correctionSpeed;
 
 
 	void Start () {
+		// Set the game manager
+		gameManager = (GameManager)GameObject.FindObjectOfType(typeof(GameManager));
+
 		boards = new SelectionBoardController[boardPrefabs.Length];
 		arcDist = 6.28f / boards.Length;
 
@@ -52,6 +58,9 @@ public class SelectionController : MonoBehaviour {
 		// Set the default board index
 		boardRot = Quaternion.LookRotation(boards[0].transform.position - camPivot.position);
 		boardIndex = 0;
+
+		// Update the selected board in the game manager
+		gameManager.boardPrefab = boardPrefabs[boardIndex];
 	}
 
 	void FixedUpdate () {
@@ -81,6 +90,10 @@ public class SelectionController : MonoBehaviour {
 
 				boardRot = nextRot;
 				boardIndex = nextIndex;
+
+				// Update the selected board in the game manager
+				gameManager.boardPrefab = boardPrefabs[boardIndex];
+				SoundUtils.playSound(gameObject, turnSound);
 			}
 		}
 

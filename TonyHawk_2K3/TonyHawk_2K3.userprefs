@@ -1,6 +1,13 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/_Utility/SoundUtils.cs">
+    <Files>
+      <File FileName="Assets/Scripts/_Managers/GameManager.cs" Line="171" Column="3" />
+      <File FileName="Assets/Scripts/_Managers/GUIManager.cs" Line="56" Column="39" />
+      <File FileName="Assets/Scripts/_Utility/SoundUtils.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/_Selection/SelectionController.cs" Line="96" Column="49" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>

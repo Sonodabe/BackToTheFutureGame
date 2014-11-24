@@ -449,8 +449,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxSpeed: 30
   accelMod: 2
-  torqueX: 2.5
-  torqueZ: 15
+  torqueZ: 2.5
+  torqueX: 15
   turnForce: 10
   groundDist: 1.75
   crouchForce: 0
