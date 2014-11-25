@@ -3,18 +3,12 @@ using System.Collections;
 
 public class GameManager : MonoBehaviour {
 
-	// Enum used to track the current state of the game
-	public enum GameState {
-		Transition,
-		BoardSelect,
-		GameSetup,
-		GameOn,
-		FinalScore,
-		GameOver,
-		GameReset,
-	}
-	public static GameState state;
+	private delegate void GameState();
 
+	// Gets called every fixed update
+	// Will change depending on what state the game is in
+	private GameState UpdateScene;
+	
 	public GameObject boardPrefab;
 	public GameObject boardCamPrefab;
 
@@ -40,62 +34,34 @@ public class GameManager : MonoBehaviour {
 	void Start () {
 		// Set the default game state
 		guiManager.DisableGUI();
-		state = GameState.BoardSelect;
+		UpdateScene = SelectBoard;
 
 		Screen.lockCursor = true;
 	}
 
 	void FixedUpdate () {
-		switch(state) {
-		case GameState.BoardSelect:
-			if (Input.GetAxis("Mouse ScrollWheel") < 0) {
-				// Change to the main scene
-				StartCoroutine(ChangeScene("Main_00", GameState.GameSetup, 2.0f));
-			}
-
-			break;
-		case GameState.GameSetup:
-			// Set up the game
-			SetUpGame();
-
-			break;
-		case GameState.GameOn:
-			// Update the time and score
-			UpdateGame();
-
-			break;
-		case GameState.FinalScore:
-			// Enable the final score
-			guiManager.DisableGUI();
-			guiManager.EnableFinalScoreGUI(score);
-
-			// Transition to GameOver
-			state = GameState.GameOver;
-
-			break;
-		case GameState.GameOver:
-			// Transition to GameSetup
-			if (Input.GetButtonDown("Reset")) {
-				state = GameState.GameReset;
-			}
-
-			break;
-		case GameState.GameReset:
-			// Reset the game
-			ResetGame();
-
-			break;
-		}
+		UpdateScene ();
 	}
 
 	public void UpdateScore(int newScore) {
-		if (state == GameState.GameOn) {
+		if (UpdateScene == UpdateGame) {
 			// Update the score
 			score += newScore;
 		}
 	}
 
-	void SetUpGame() {
+	void Transition() {
+		// Do anything we want to do between scenes
+	}
+
+	void SelectBoard() {
+		if (Input.GetAxis ("Mouse ScrollWheel") < 0) {
+						// Change to the main scene
+						StartCoroutine (ChangeScene ("Main_00", SetupGame, 2.0f));
+		}
+	}
+
+	void SetupGame() {
 		// Find the spawn location
 		spawnLoc = GameObject.FindGameObjectWithTag("SpawnLocation").transform;
 
@@ -113,7 +79,7 @@ public class GameManager : MonoBehaviour {
 		ResetGame();
 
 		// Transition to GameOn
-		state = GameState.GameOn;
+		UpdateScene = UpdateGame;
 	}
 
 	void UpdateGame() {
@@ -144,7 +110,7 @@ public class GameManager : MonoBehaviour {
 
 		// Transition to FinalScore
 		if (timer == 0.0f && boardCont.GetIsGrounded()) {
-			state = GameState.FinalScore;
+			UpdateScene = ShowFinalScore;
 		}
 	}
 
@@ -167,11 +133,28 @@ public class GameManager : MonoBehaviour {
 		timer = gameTime;
 		
 		// Transition to GameOn
-		state = GameState.GameOn;
+		UpdateScene = UpdateGame;
 	}
 
-	IEnumerator ChangeScene(string newScene, GameState newState, float transitionTime = 0.0f) {
-		state = GameState.Transition;
+	void ShowFinalScore() {
+		// Enable the final score
+		guiManager.DisableGUI();
+		guiManager.EnableFinalScoreGUI(score);
+		
+		// Transition to GameOver
+		UpdateScene = GameOver;
+	}
+
+	void GameOver() {
+		// Transition to GameSetup
+		if (Input.GetButtonDown("Reset")) {
+			UpdateScene = ResetGame;
+		}
+
+	}
+
+	IEnumerator ChangeScene(string newScene, GameState newUpdate, float transitionTime = 0.0f) {
+		UpdateScene = Transition;
 		float timer = 0.0f;
 
 		/** FADE THE CURRENT SCENE OUT **/
@@ -187,7 +170,7 @@ public class GameManager : MonoBehaviour {
 
 		/** LOAD THE NEW SCENE **/
 		Application.LoadLevel(newScene);
-		state = newState;
+		UpdateScene = newUpdate;
 		timer = 0.0f;
 
 		/** FADE THE NEW SCENE IN **/
