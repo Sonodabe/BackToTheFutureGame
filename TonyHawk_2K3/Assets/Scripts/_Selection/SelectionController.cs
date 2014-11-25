@@ -17,6 +17,7 @@ public class SelectionController : MonoBehaviour {
 
 	public float turnSpeed;
 	public AudioClip turnSound;
+	public float turnSoundVolume = 1.0f;
 	public float correctionSpeed;
 
 
@@ -93,7 +94,7 @@ public class SelectionController : MonoBehaviour {
 
 				// Update the selected board in the game manager
 				gameManager.boardPrefab = boardPrefabs[boardIndex];
-				SoundUtils.playSound(gameObject, turnSound);
+				SoundUtils.playSound(gameObject, turnSound, turnSoundVolume);
 			}
 		}
 

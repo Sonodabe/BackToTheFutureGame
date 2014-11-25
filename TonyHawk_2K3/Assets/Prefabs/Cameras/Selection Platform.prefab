@@ -304,8 +304,9 @@ MonoBehaviour:
   - {fileID: 100016, guid: f5d903102aa35499a86627e226b49bb1, type: 2}
   camPivot: {fileID: 400010}
   radius: 5
-  turnSpeed: .75
-  turnSound: {fileID: 8300000, guid: db15fdaceefc54d0889c4e7343eb12ec, type: 3}
+  turnSpeed: .649999976
+  turnSound: {fileID: 8300000, guid: 95a6677b3fe4d4945a2d238830ef62cd, type: 3}
+  turnSoundVolume: .25
   correctionSpeed: 2
 --- !u!124 &12400000
 Behaviour:

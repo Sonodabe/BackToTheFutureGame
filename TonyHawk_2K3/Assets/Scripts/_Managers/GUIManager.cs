@@ -59,4 +59,38 @@ public class GUIManager : MonoBehaviour {
 		finalScoreGUI.enabled = true;
 		gameOverGUI.enabled = true;
 	}
+
+	public IEnumerator FadeOverlayIn(float fadeTime) {
+		StopCoroutine("FadeOverlayOut");
+
+		float alpha = overlay.color.a;
+		float timer = 0.0f;
+		
+		while (timer < fadeTime) {
+			float newAlpha = Mathf.Lerp(alpha, 1.0f, timer / fadeTime);
+			UpdateOverlayAlpha(newAlpha);
+			
+			timer += Time.deltaTime;
+			yield return null;
+		}
+		
+		UpdateOverlayAlpha(1.0f);
+	}
+
+	public IEnumerator FadeOverlayOut(float fadeTime) {
+		StopCoroutine("FadeOverlayIn");
+
+		float alpha = overlay.color.a;
+		float timer = 0.0f;
+
+		while (timer < fadeTime) {
+			float newAlpha = Mathf.Lerp(alpha, 0.0f, timer / fadeTime);
+			UpdateOverlayAlpha(newAlpha);
+
+			timer += Time.deltaTime;
+			yield return null;
+		}
+
+		UpdateOverlayAlpha(0.0f);
+	}
 }

@@ -3,11 +3,10 @@ using System.Collections;
 
 public class GameManager : MonoBehaviour {
 
-	private delegate void GameState();
-
 	// Gets called every fixed update
-	// Will change depending on what state the game is in
-	private GameState UpdateScene;
+	// Changes depending on the current state
+	private delegate void GameState();
+	private GameState UpdateState;
 	
 	public GameObject boardPrefab;
 	public GameObject boardCamPrefab;
@@ -16,6 +15,7 @@ public class GameManager : MonoBehaviour {
 	private BoardCamera boardCam;
 	private Transform spawnLoc;
 
+	private MusicController musicCont;
 	public GUIManager guiManager;
 
 	private int score;				// The current score
@@ -25,6 +25,8 @@ public class GameManager : MonoBehaviour {
 	public int gameTime;			// The length of the game in seconds
 	private float timer = 0.0f;		// Tracks the time that has passed
 
+	public float sceneTransitionTime = 1.0f;
+
 
 	void Awake () {
 		// Ensure the manager is not destroyed
@@ -32,32 +34,37 @@ public class GameManager : MonoBehaviour {
 	}
 
 	void Start () {
-		// Set the default game state
-		guiManager.DisableGUI();
-		UpdateScene = SelectBoard;
+		// Set the default update state
+		UpdateState = SelectBoard;
 
+		// Set the music controller
+		musicCont = GameObject.FindGameObjectWithTag("Music").GetComponent<MusicController>();
+		musicCont.StartCoroutine("FadeMusicIn", sceneTransitionTime);
+
+		// Manage GUI settings
+		guiManager.DisableGUI();
 		Screen.lockCursor = true;
 	}
 
 	void FixedUpdate () {
-		UpdateScene ();
+		UpdateState ();
 	}
 
 	public void UpdateScore(int newScore) {
-		if (UpdateScene == UpdateGame) {
+		if (UpdateState == UpdateGame) {
 			// Update the score
 			score += newScore;
 		}
 	}
 
-	void Transition() {
+	void TransitionState() {
 		// Do anything we want to do between scenes
 	}
 
 	void SelectBoard() {
 		if (Input.GetAxis ("Mouse ScrollWheel") < 0) {
-						// Change to the main scene
-						StartCoroutine (ChangeScene ("Main_00", SetupGame, 2.0f));
+			// Change to the main scene
+			StartCoroutine (ChangeScene ("Main_00", SetupGame, sceneTransitionTime));
 		}
 	}
 
@@ -79,7 +86,7 @@ public class GameManager : MonoBehaviour {
 		ResetGame();
 
 		// Transition to GameOn
-		UpdateScene = UpdateGame;
+		UpdateState = UpdateGame;
 	}
 
 	void UpdateGame() {
@@ -110,7 +117,7 @@ public class GameManager : MonoBehaviour {
 
 		// Transition to FinalScore
 		if (timer == 0.0f && boardCont.GetIsGrounded()) {
-			UpdateScene = ShowFinalScore;
+			UpdateState = ShowFinalScore;
 		}
 	}
 
@@ -133,7 +140,7 @@ public class GameManager : MonoBehaviour {
 		timer = gameTime;
 		
 		// Transition to GameOn
-		UpdateScene = UpdateGame;
+		UpdateState = UpdateGame;
 	}
 
 	void ShowFinalScore() {
@@ -142,46 +149,44 @@ public class GameManager : MonoBehaviour {
 		guiManager.EnableFinalScoreGUI(score);
 		
 		// Transition to GameOver
-		UpdateScene = GameOver;
+		UpdateState = GameOver;
 	}
 
 	void GameOver() {
 		// Transition to GameSetup
 		if (Input.GetButtonDown("Reset")) {
-			UpdateScene = ResetGame;
+			UpdateState = ResetGame;
 		}
-
 	}
 
 	IEnumerator ChangeScene(string newScene, GameState newUpdate, float transitionTime = 0.0f) {
-		UpdateScene = Transition;
+		UpdateState = TransitionState;
 		float timer = 0.0f;
 
-		/** FADE THE CURRENT SCENE OUT **/
+		/** FADE OUT THE OLD SCENE **/
+		musicCont.StartCoroutine("FadeMusicOut", transitionTime);
+		guiManager.StartCoroutine("FadeOverlayIn", transitionTime);
+
+		// Wait for coroutines to complete
 		while (timer < transitionTime) {
 			timer += Time.deltaTime;
-
-			// Fade out the scene
-			float alpha = Mathf.Lerp (0.0f, 1.0f, timer / transitionTime);
-			guiManager.UpdateOverlayAlpha(alpha);
-
 			yield return null;
 		}
 
 		/** LOAD THE NEW SCENE **/
 		Application.LoadLevel(newScene);
-		UpdateScene = newUpdate;
-		timer = 0.0f;
+		UpdateState = newUpdate;
+		MusicController newMusicCont = musicCont;
 
-		/** FADE THE NEW SCENE IN **/
-		while (timer < transitionTime) {
-			timer += Time.deltaTime;
-
-			// Fade in the scene
-			float alpha = Mathf.Lerp (1.0f, 0.0f, timer / transitionTime);
-			guiManager.UpdateOverlayAlpha(alpha);
-
+		// Wait for the scene to load
+		while (musicCont == newMusicCont) {
+			newMusicCont = GameObject.FindGameObjectWithTag("Music").GetComponent<MusicController>();
 			yield return null;
 		}
+
+		/** FADE IN THE CURRENT SCENE **/
+		musicCont = newMusicCont;
+		musicCont.StartCoroutine("FadeMusicIn", transitionTime);
+		guiManager.StartCoroutine("FadeOverlayOut", transitionTime);
 	}
 }
