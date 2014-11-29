@@ -59,10 +59,6 @@ public class BoardController : MonoBehaviour {
 
 		// Apply turning torque to the hoverboard
 		rigidbody.AddRelativeTorque(0.0f, turnForce * turnInput, 0.0f);
-
-		foreach (Charge charge in charges) {
-			charge.ChangeDelta(Input.GetAxisRaw ("Jump") != 0 && isGrounded);
-		}
 	}
 
 	public void UpdateChargeEnabled(bool isEnabled) {

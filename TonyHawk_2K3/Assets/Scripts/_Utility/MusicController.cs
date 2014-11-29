@@ -5,55 +5,93 @@ public class MusicController : MonoBehaviour {
 
 	public AudioClip[] clips;
 	private int clipIndex;
-
+	
 	public float maxVolume;
+	public bool autoPlay = false;
+
+	public bool autoCont = false;
+	private bool hasPlayed = false;
 
 
 	// Use this for initialization
-	void Start () {
-		// Choose a random clip index
+	void Start() {
+		// Add an audio source component
+		if (gameObject.GetComponent<AudioSource>() == null) {
+			gameObject.AddComponent<AudioSource>();
+
+			audio.loop = false;
+			audio.volume = 0.0f;
+		}
+
+		// Select a random clip
 		clipIndex = Random.Range(0, clips.Length);
+		audio.clip = clips[clipIndex];
+
+		// Check if the music should be played
+		if (autoPlay) Play(maxVolume);
+	}
+
+	void Update() {
+		if (!audio.isPlaying && hasPlayed && autoCont) {
+			// Select a random clip
+			clipIndex = Random.Range(0, clips.Length);
+			audio.clip = clips[clipIndex];
+
+			Play(maxVolume);
+		}
+	}
+
+	public void Play(float volume) {
+		hasPlayed = true;
+
+		audio.volume = volume;
+		audio.Play ();
+	}
+
+	public void Stop() {
+		audio.volume = 0.0f;
+		audio.Stop ();
+	}
+
+	public void Pause() {
+		audio.Pause();
 	}
 
 	public IEnumerator FadeMusicIn(float fadeTime) {
-		// Make sure the audio is not playing
-		if (SoundUtils.isNotPlayingClip(gameObject, clips[clipIndex])) {
-			StopCoroutine("FadeMusicOut");
+		// Stop volume fading coroutines
+		StopCoroutine("FadeMusicOut");
+		Play(0.0f);
 
-			SoundUtils.loopSound(gameObject, clips[clipIndex], 0.0f);
-			float volume = audio.volume;
-			float timer = 0.0f;
+		float timer = 0.0f;
 
-			// Fade in the volume
-			while (timer < fadeTime) {
-				timer += Time.deltaTime;
-				audio.volume = Mathf.Lerp(volume, maxVolume, timer / (fadeTime - Time.deltaTime));
+		// Fade in the volume
+		while (timer < fadeTime) {
+			timer += Time.deltaTime;
+			audio.volume = Mathf.Lerp(0.0f, maxVolume, timer / fadeTime);
 
-				yield return null;
-			}
-
-			audio.volume = maxVolume;
+			yield return null;
 		}
+
+		// Ensure the volume is maximized
+		audio.volume = maxVolume;
 	}
 
 	public IEnumerator FadeMusicOut(float fadeTime) {
-		// Make sure the audio is playing
-		if (SoundUtils.isPlayingClip(gameObject, clips[clipIndex])) {
-			StopCoroutine("FadeMusicIn");
+		// Stop volume fading coroutines
+		StopCoroutine("FadeMusicIn");
 
-			float volume = audio.volume;
-			float timer = 0.0f;
+		float startVol = audio.volume;
+		float timer = 0.0f;
 
-			// Fade out the volume
-			while (timer < fadeTime) {
-				timer += Time.deltaTime;
-				audio.volume = Mathf.Lerp (volume, 0.0f, timer / (fadeTime - Time.deltaTime));
+		// Fade out the volume
+		while (timer < fadeTime) {
+			timer += Time.deltaTime;
+			audio.volume = Mathf.Lerp (startVol, 0.0f, timer / fadeTime);
 
-				yield return null;
-			}
-
-			audio.volume = 0.0f;
-			audio.Stop();
+			yield return null;
 		}
+
+		// Stop the audio source
+		audio.Stop();
 	}
 }

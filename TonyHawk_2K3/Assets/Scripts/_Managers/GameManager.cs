@@ -24,8 +24,8 @@ public class GameManager : MonoBehaviour {
 
 	public int gameTime;			// The length of the game in seconds
 	private float timer = 0.0f;		// Tracks the time that has passed
-
-	public float sceneTransitionTime = 1.0f;
+	
+	private bool sceneLoaded;
 
 
 	void Awake () {
@@ -39,7 +39,7 @@ public class GameManager : MonoBehaviour {
 
 		// Set the music controller
 		musicCont = GameObject.FindGameObjectWithTag("Music").GetComponent<MusicController>();
-		musicCont.StartCoroutine("FadeMusicIn", sceneTransitionTime);
+		musicCont.StartCoroutine("FadeMusicIn", 1.0f);
 
 		// Manage GUI settings
 		guiManager.DisableGUI();
@@ -64,7 +64,7 @@ public class GameManager : MonoBehaviour {
 	void SelectBoard() {
 		if (Input.GetAxis ("Mouse ScrollWheel") < 0) {
 			// Change to the main scene
-			StartCoroutine (ChangeScene ("Main_00", SetupGame, sceneTransitionTime));
+			StartCoroutine (ChangeScene ("Main_00", SetupGame, 1.0f, 2.0f));
 		}
 	}
 
@@ -159,34 +159,41 @@ public class GameManager : MonoBehaviour {
 		}
 	}
 
-	IEnumerator ChangeScene(string newScene, GameState newUpdate, float transitionTime = 0.0f) {
+	IEnumerator ChangeScene(string newScene, GameState newUpdate, float outTime, float inTime) {
 		UpdateState = TransitionState;
 		float timer = 0.0f;
 
 		/** FADE OUT THE OLD SCENE **/
-		musicCont.StartCoroutine("FadeMusicOut", transitionTime);
-		guiManager.StartCoroutine("FadeOverlayIn", transitionTime);
+		guiManager.StartCoroutine("FadeOverlayIn", outTime);
+		musicCont.StartCoroutine("FadeMusicOut", outTime);
 
 		// Wait for coroutines to complete
-		while (timer < transitionTime) {
+		while (timer < outTime) {
 			timer += Time.deltaTime;
 			yield return null;
 		}
 
 		/** LOAD THE NEW SCENE **/
+		sceneLoaded = false;
 		Application.LoadLevel(newScene);
-		UpdateState = newUpdate;
-		MusicController newMusicCont = musicCont;
 
 		// Wait for the scene to load
-		while (musicCont == newMusicCont) {
-			newMusicCont = GameObject.FindGameObjectWithTag("Music").GetComponent<MusicController>();
+		while (!sceneLoaded) {
 			yield return null;
 		}
 
+		// Perform the new update function
+		UpdateState = newUpdate;
+		newUpdate();
+
 		/** FADE IN THE CURRENT SCENE **/
-		musicCont = newMusicCont;
-		musicCont.StartCoroutine("FadeMusicIn", transitionTime);
-		guiManager.StartCoroutine("FadeOverlayOut", transitionTime);
+		musicCont = GameObject.FindGameObjectWithTag("Music").GetComponent<MusicController>();
+		guiManager.StartCoroutine("FadeOverlayOut", inTime);
+		musicCont.StartCoroutine("FadeMusicIn", inTime);
+	}
+
+	void OnLevelWasLoaded(int level) {
+		print ("Loaded level " + Application.loadedLevelName);
+		sceneLoaded = true;
 	}
 }

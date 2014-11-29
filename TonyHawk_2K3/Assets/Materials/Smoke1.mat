@@ -44,12 +44,12 @@ Material:
     m_Floats:
       data:
         first:
-          name: _InvFade
-        second: .00999999978
-      data:
-        first:
           name: _Shininess
         second: 20
+      data:
+        first:
+          name: _InvFade
+        second: 1
       data:
         first:
           name: _Highlight
@@ -61,12 +61,12 @@ Material:
         second: {r: 1, g: 1, b: 1, a: 1}
       data:
         first:
-          name: _TintColor
-        second: {r: .0196078438, g: .0196078438, b: .0196078438, a: 1}
-      data:
-        first:
           name: _SpecColor
         second: {r: .5, g: .5, b: .5, a: 1}
+      data:
+        first:
+          name: _TintColor
+        second: {r: .0235294122, g: .0235294122, b: .0235294122, a: 1}
       data:
         first:
           name: _color
@@ -75,10 +75,6 @@ Material:
         first:
           name: BumpMapScale
         second: {r: 1, g: 1, b: 1, a: 1}
-      data:
-        first:
-          name: _EmisColor
-        second: {r: .200000003, g: .200000003, b: .200000003, a: 0}
 --- !u!1002 &2100001
 EditorExtensionImpl:
   serializedVersion: 6
